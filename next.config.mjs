@@ -7,7 +7,8 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: true,
-  exportTrailingSlash: true, // Ensure trailing slashes for directories
+  trailingSlash: true, // Ensure trailing slashes for directories
 };
 
 export default nextConfig;
+
