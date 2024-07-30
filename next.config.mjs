@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Uncomment the following line to build a static site.
   output: "export",
   basePath: "/jcdev",
   assetPrefix: "/jcdev/",
@@ -8,6 +7,17 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: true,
+  exportTrailingSlash: true, // Ensure trailing slashes for directories
+  exportPathMap: async function(
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      ...defaultPathMap,
+      "/images/vercel.svg": { page: "/images/vercel.svg" },
+      "/images/next.svg": { page: "/images/next.svg" },
+    };
+  },
 };
 
 export default nextConfig;
