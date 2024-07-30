@@ -1,14 +1,18 @@
 {
   "name": "jcdev2024",
+  "homepage": "https://jsncndl.github.io/jcdev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
+    "gh-pages": "^6.1.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
