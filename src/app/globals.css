@@ -1,11 +1,21 @@
+/* src\app\globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 23, 27, 38;
+  --dark-blue-rgb: 28, 54, 89;
+  --blue-rgb: 7, 152, 242;
+  --yellow-rgb: 242, 200, 121;
+  --dark-yellow-rgb: 217, 196, 156;
+  --purple-rgb: 151, 30, 193;
+  --gradient-cyan-end: 7, 152, 242;
+  --gradient-cyan-start: 0, 255, 255;
+  --text-rgb: 211, 211, 211;
+  --text-title-rgb: 248, 248, 255;
+  --text-muted: 169, 169, 169;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,13 +35,96 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--text-rgb));
+  background: rgb(var(--background-rgb));
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(var(--text-title-rgb));
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+.card-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  border: 1px rgb(var(--dark-blue-rgb)) solid;
+  border-radius: 15px;
+  padding: 18px;
+  background: rgba(var(--gradient-cyan-end), 0.1);
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    30deg,
+    rgba(var(--gradient-cyan-end), 0.15) 0%,
+    rgba(var(--purple-rgb), 0.1) 35%,
+    rgba(var(--gradient-cyan-end), 0.1) 77%
+  );
+  backdrop-filter: blur(6px);
+  /* filter: drop-shadow(0px 0px 10px rgba(179, 179, 179, 0.453)); */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  ;
+}
+
+
+.card-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 49%;
+  background: rgba(var(--gradient-cyan-end), 0.1);
+  background: linear-gradient(
+    30deg,
+    rgba(var(--gradient-cyan-end), 0.15) 0%,
+    rgba(var(--purple-rgb), 0.1) 35%,
+    rgba(var(--gradient-cyan-end), 0.1) 77%
+  );
+  border: 1px rgb(var(--dark-blue-rgb)) solid;
+  border-radius: 15px;
+  padding: 5px;
+  filter: blur(6px);
+  backdrop-filter: blur(6px);
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.958));
+  overflow: hidden;
+}
+
+.card-project-figcaption {
+  width: 100%;
+  padding: 5px 15px 5px 15px;
+  position: absolute;
+  bottom: 0;
+  backdrop-filter: contrast(20%) blur(2px);
+  box-shadow: 0px 0px 5px rgba(132, 132, 132, 0.59)
+}
+
+@keyframes fillSvgAnimation {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: currentColor;
+  }
+}
+
+@keyframes strokeSvgAnimation {
+  0% {
+    stroke: black;
+  }
+  100% {
+    stroke: currentColor;
+  }
 }
 
 @layer utilities {
