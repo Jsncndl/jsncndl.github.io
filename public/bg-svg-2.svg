@@ -1,0 +1,13 @@
+<svg width="500" height="500" version="1.1" viewBox="0 0 132.29 132.29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient2" x1="48.083" x2="78.106" y1="40.209" y2="51.486" gradientTransform="matrix(1.1046 -.29598 .29598 1.1046 -21.618 35.992)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0798f2" offset=".13093"/>
+   <stop stop-color="#971ec1" offset=".34199"/>
+   <stop stop-color="#0798f2" offset=".75056"/>
+  </linearGradient>
+  <filter id="filter3" x="-.38949" y="-.40335" width="1.779" height="1.8067" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="11.635271"/>
+  </filter>
+ </defs>
+ <path d="m30.298 70.489 24.782-38.96 11.224 34.801 13.594 3.4157c-0.22462 4.8527-0.44923 9.7055-0.67384 14.558 7.6291 5.4108 15.442 10.591 22.77 16.408-3.1224 0.27794-7.8128-0.70938-11.501-0.94032-6.5008-0.70162-12.999-1.4232-19.497-2.1527l-6.576-15.883-15.22 3.686-5.9354-12.395z" fill="url(#linearGradient2)" filter="url(#filter3)" style="mix-blend-mode:normal"/>
+</svg>
