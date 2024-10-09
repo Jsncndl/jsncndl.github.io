@@ -74,16 +74,14 @@ section {
   backdrop-filter: blur(6px);
   /* filter: drop-shadow(0px 0px 10px rgba(179, 179, 179, 0.453)); */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  ;
 }
-
 
 .card-project {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 300px;
-  width: 49%;
+  width: 100%;
   background: rgba(var(--gradient-cyan-end), 0.1);
   background: linear-gradient(
     30deg,
@@ -97,6 +95,7 @@ section {
   filter: blur(6px);
   backdrop-filter: blur(6px);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.958));
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -106,7 +105,22 @@ section {
   position: absolute;
   bottom: 0;
   backdrop-filter: contrast(20%) blur(2px);
-  box-shadow: 0px 0px 5px rgba(132, 132, 132, 0.59)
+  box-shadow: 0px 0px 5px rgba(132, 132, 132, 0.59);
+}
+
+input:checked + label {
+  /* border-color: rgb(var(--blue-rgb)); */
+  background-color: rgb(var(--blue-rgb), 0.6);
+  color: white;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+  .card-project {
+    width: 47%;
+  }
 }
 
 @keyframes fillSvgAnimation {
