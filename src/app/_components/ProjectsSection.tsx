@@ -12,13 +12,13 @@ const figureVariants = {
 
 const figcaptionVariants = {
   initial: {
-    top: "255px",
+    top: "auto",
     transition: {
       top: { stiffness: 1000, velocity: -100 },
     },
   },
   hover: {
-    top: "175px",
+    top: "256px",
     transition: {
       top: { stiffness: 1000, velocity: -100 },
     },
@@ -27,180 +27,87 @@ const figcaptionVariants = {
 
 const imageVariants = {
   initial: {
-    scale: 1,
-    y: 0,
+    scale: 1.1,
+    y: 12,
+    transition: {
+      duration: 0.3,
+    },
   },
   hover: {
     scale: 1.2,
     y: 30,
     transition: {
-      scale: { stiffness: 1000, velocity: -100 },
-      y: { stiffness: 1000, velocity: -100 },
+      duration: 0.3,
     },
   },
 };
+
+const projects = [
+  {
+    name: "Booki",
+    img: "/booki_mockup.png",
+    desc: "Page d'accueil d'un site de réservation de d'hébergement de vacances.",
+  },
+  {
+    name: "Kanap",
+    img: "/kanap_mockup.png",
+    desc: "Mise en place de l'affichage dynamique des produits et création du système de panier sauvegarder entre les sessions pour les utilisateurs.",
+  },
+  {
+    name: "Agence La Panthère",
+    img: "/lapanthere_mockup.png",
+    desc: "Correction graphique et sémantique d'un site web pour une agence de communication.",
+  },
+  {
+    name: "OhMyFood!",
+    img: "/ohmyfood_mockup.png",
+    desc: "Création d'un site de commande de repas auprès de restaurants. Création de la page d'accueil et de la page de sélection des menus.",
+  },
+  {
+    name: "Groupomania",
+    img: "/groupomania_mockup.png",
+    desc: "Création d'un réseau social professionnel privé. Système de création de compte, partage de contenu texte ou image, possibilité d'aimer et de commenter les publications. Système de modération pour les administrateurs.",
+  },
+];
 
 export default function ProjectsSection() {
   return (
     <section>
       <h2 className="w-2/3 text-center text-3xl">Mes projets</h2>
       <motion.div className="relative flex w-full flex-row flex-wrap items-center justify-center gap-6">
-        <motion.figure
-          className="card-project"
-          initial="initial"
-          whileHover={"hover"}
-          variants={figureVariants}
-        >
-          <div className="relative flex h-[80%] w-full items-center justify-center">
-            <motion.img
-              variants={imageVariants}
-              src="/booki_mockup.png"
-              width={500}
-              height={357}
-              alt="Exemple de site Booki"
-            />
-          </div>
-          <motion.figcaption
-            className="card-project-figcaption"
-            variants={figcaptionVariants}
+        {projects.map((project, index) => (
+          <motion.figure
+            className="card-project"
+            initial="initial"
+            whileHover="hover"
+            variants={figureVariants}
+            key={index}
           >
-            <h3 className="text-center text-2xl md:w-auto md:pb-2">Booki</h3>
-            <motion.p variants={figcaptionVariants}>
-              {`Page d'accueil d'un site de réservation de d'hébergement de vacances.`}
-            </motion.p>
-          </motion.figcaption>
-        </motion.figure>
-
-        <motion.figure
-          className="card-project"
-          initial="initial"
-          whileHover={"hover"}
-          variants={figureVariants}
-        >
-          <div className="relative flex h-[80%] w-full items-center justify-center">
-            <motion.img
-              variants={imageVariants}
-              src="/kanap_mockup.png"
-              width={500}
-              height={357}
-              alt="Exemple de site Kanap"
-            />
-          </div>
-          <motion.figcaption
-            className="card-project-figcaption"
-            variants={figcaptionVariants}
-          >
-            <h3 className="w-2/3 text-center text-2xl md:w-auto md:pb-2">
-              Kanap
-            </h3>
-            <motion.p variants={figcaptionVariants}>
-              {`Mise en place de l'affichage dynamique des produits et création du système de 
-              panier sauvegarder entre les sessions pour les utilisateurs.`}
-            </motion.p>
-          </motion.figcaption>
-        </motion.figure>
-
-        <motion.figure
-          className="card-project"
-          initial="initial"
-          whileHover={"hover"}
-          variants={figureVariants}
-        >
-          <div className="relative flex h-[80%] w-full items-center justify-center">
-            <motion.img
-              variants={imageVariants}
-              src="/lapanthere_mockup.png"
-              width={500}
-              height={357}
-              alt="Exemple de site La Panthère"
-            />
-          </div>
-          <motion.figcaption
-            className="card-project-figcaption"
-            variants={figcaptionVariants}
-          >
-            <h3 className="w-2/3 text-center text-2xl md:w-auto md:pb-2">
-              Agence La Panthère
-            </h3>
-            <motion.p variants={figcaptionVariants}>
-              {`Correction graphique et sémantique d'un site web pour une agence de communication.`}
-            </motion.p>
-          </motion.figcaption>
-        </motion.figure>
-
-        <motion.figure
-          className="card-project"
-          initial="initial"
-          whileHover={"hover"}
-          variants={figureVariants}
-        >
-          <div className="relative flex h-[80%] w-full items-center justify-center">
-            <motion.img
-              variants={imageVariants}
-              src="/ohmyfood_mockup.png"
-              width={500}
-              height={357}
-              alt="Exemple de site OhMyFood!"
-            />
-          </div>
-          <motion.figcaption
-            className="card-project-figcaption"
-            variants={figcaptionVariants}
-          >
-            <h3 className="w-2/3 text-center text-2xl md:w-auto md:pb-2">
-              OhMyFood!
-            </h3>
-            <motion.p variants={figcaptionVariants}>
-              {`Création d'un site de commande de repas auprès de restaurants. Création de la page d'accueil et de la page de sélection des menus.`}
-            </motion.p>
-          </motion.figcaption>
-        </motion.figure>
-
-        <motion.figure
-          className="card-project"
-          initial="initial"
-          whileHover={"hover"}
-          variants={figureVariants}
-        >
-          <div className="relative flex h-[80%] w-full items-center justify-center">
-            <motion.img
-              variants={imageVariants}
-              src="/groupomania_mockup.png"
-              width={500}
-              height={357}
-              alt="Exemple de site Groupomania!"
-            />
-          </div>
-          <motion.figcaption
-            className="card-project-figcaption"
-            variants={figcaptionVariants}
-          >
-            <h3 className="w-2/3 text-center text-2xl md:w-auto md:pb-2">
-              Groupomania
-            </h3>
-            <motion.p variants={figcaptionVariants}>
-              {`Création d'un réseau social professionel privé. Système de création de compte, 
-              partage de contenu texte ou image, possibilité d'aimer et de 
-              commenter les publications. Système de modération pour les 
-              administrateurs.`}
-            </motion.p>
-          </motion.figcaption>
-        </motion.figure>
-
-        {
-          <div
-            className="pointer-events-none absolute -left-96 top-20 z-[-10] blur-2xl lg:left-0 lg:top-0"
-            aria-hidden="true"
-          >
-            <div
-              className="aspect-[1155/678] w-[100rem] rotate-[75deg] bg-gradient-to-tr from-gradient-cyan-end from-30% via-purple-rgb via-50% to-dark-blue-rgb to-70% opacity-20 lg:rotate-45"
-              style={{
-                clipPath:
-                  "polygon(41.9% 36%, 70.5% 20.3%, 81.7% 12%, 95.5% 50.8%, 82.6% 85.8%, 47.5% 91.8%, 6% 78%, 8.9% 24.5%, 27.3% 17.5%)",
-              }}
-            ></div>
-          </div>
-        }
+            <div className="relative flex h-[80%] w-full items-center justify-center">
+              <motion.img
+                variants={imageVariants}
+                src={project.img}
+                width={500}
+                height={357}
+                alt={`Exemple de site ${project.name}`}
+              />
+            </div>
+            <motion.figcaption
+              className="card-project-figcaption"
+              variants={figcaptionVariants}
+            >
+              <h3 className="text-center text-2xl md:w-auto md:pb-2">
+                {project.name}
+              </h3>
+              <motion.p
+                variants={figcaptionVariants}
+                className="hidden md:block"
+              >
+                {project.desc}
+              </motion.p>
+            </motion.figcaption>
+          </motion.figure>
+        ))}
       </motion.div>
       <div className="absolute -right-14 z-[-2]">
         <motion.div
