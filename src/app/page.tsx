@@ -8,12 +8,13 @@ import Contact from "./_components/Contact";
 
 export default function Home() {
   return (
-    <main className="relative flex flex-col items-center justify-center gap-40 overflow-x-hidden overflow-y-clip p-12 sm:p-24">
+    <main className="relative flex flex-col items-center justify-center gap-40 overflow-x-hidden overflow-y-clip p-24">
       <Header />
 
       <motion.section
         animate={{ scale: [0, 1] }}
         transition={{ duration: 0.6, delay: 1.3 }}
+        className="md:w-3/4"
       >
         <h2 className="w-2/3 text-center text-3xl">
           Transformez votre présence en ligne avec des solutions web sur mesure
@@ -22,7 +23,7 @@ export default function Home() {
           Passionné par le développement web et autodidacte déterminé, je vous
           propose des services de création de sites internet utilisant les
           dernières technologies pour donner vie à vos projets en ligne. Que
-          vous soyez une petite entreprise, un entrepreneur ou une association,
+          vous soyez une <strong>petite entreprise</strong>, un <strong>entrepreneur</strong> ou une <strong>association</strong>,
           je suis là pour réaliser un site web qui vous ressemble et qui répond
           à vos besoins.
         </p>
@@ -205,7 +206,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <section>
+      <section className="md:w-3/4">
         <h2 className="w-2/3 text-center text-3xl">
           Pourquoi collaborer avec moi ?
         </h2>

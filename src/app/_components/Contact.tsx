@@ -46,9 +46,9 @@ export default function Contact() {
   return (
     <section>
       <h2 className="w-2/3 text-center text-3xl">Me contacter</h2>
-      <div className="card-service w-full">
+      <div className="flex w-full items-center justify-center">
         <form
-          className="flex flex-col gap-4 rounded-[15px] border-2 border-gray-500 bg-background-rgb p-6 drop-shadow-md"
+          className="form-gradient flex flex-col gap-4 rounded-[15px] border-2 border-gray-500 p-6 text-white drop-shadow-md"
           onSubmit={onSubmit}
         >
           <fieldset className="flex flex-wrap gap-6 rounded-[15px] border-2 border-gray-500 p-4">
@@ -60,9 +60,10 @@ export default function Contact() {
                 name="toggle_radio"
                 value={"creation"}
                 className="hidden"
+                defaultChecked
               />
               <label
-                className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-white/80 bg-dark-blue-rgb px-4 py-2 text-center"
+                className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
                 htmlFor="creation"
               >{`Création d'un site`}</label>
             </span>
@@ -75,7 +76,7 @@ export default function Contact() {
                 className="hidden"
               />
               <label
-                className="m-auto cursor-pointer rounded-[15px] border-2 border-white/80 bg-dark-blue-rgb px-4 py-2 text-center"
+                className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
                 htmlFor="refonte"
               >{`Refonte d'un site`}</label>
             </span>
@@ -92,7 +93,7 @@ export default function Contact() {
                 name="user_name"
                 id="user_name"
                 placeholder="Votre nom"
-                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2  focus:border-white/80 focus:outline-none"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
                 onChange={(event: any) =>
                   setFormValue({ ...formValue, user_name: event.target.value })
                 }
@@ -108,7 +109,7 @@ export default function Contact() {
                 name="user_email"
                 id="user_email"
                 placeholder="Votre email"
-                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2  focus:border-white/80 focus:outline-none"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
                 onChange={(event: any) =>
                   setFormValue({ ...formValue, user_email: event.target.value })
                 }
@@ -126,7 +127,7 @@ export default function Contact() {
                 name="user_phone"
                 id="user_phone"
                 placeholder="Votre téléphone"
-                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2  focus:border-white/80 focus:outline-none"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
                 onChange={(event: any) =>
                   setFormValue({ ...formValue, user_phone: event.target.value })
                 }
@@ -142,7 +143,7 @@ export default function Contact() {
                 name="user_object"
                 id="user_object"
                 placeholder="Objet de votre message"
-                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2  focus:border-white/80 focus:outline-none"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
                 onChange={(event: any) =>
                   setFormValue({
                     ...formValue,
@@ -162,7 +163,7 @@ export default function Contact() {
               name="user_message"
               id="user_message"
               placeholder="Votre message"
-              className="border-1 h-60 resize-none rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2  focus:border-white/80 focus:outline-none"
+              className="border-1 h-60 resize-none rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
               onChange={(event: any) =>
                 setFormValue({ ...formValue, user_message: event.target.value })
               }
@@ -172,7 +173,7 @@ export default function Contact() {
           <button
             type="submit"
             value="Envoyer"
-            className="border m-auto rounded-[15px] border-white bg-blue-rgb px-4 py-2 text-white shadow-md shadow-gray-500"
+            className="m-auto rounded-[15px] border border-white bg-blue-rgb px-4 py-2 text-white shadow-md shadow-gray-500"
           >
             Envoyer
           </button>

@@ -57,6 +57,7 @@ export default function Header() {
       <motion.div
         transition={{ delay: 1.2, duration: 0.7 }}
         animate={{ scale: [0, 1] }}
+        className="md:w-3/4"
       >
         <h1 className="mb-4 mt-20 text-center text-4xl">
           Création de sites web modernes et performants pour entrepreneurs et
