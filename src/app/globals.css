@@ -64,6 +64,7 @@ section {
   border: 1px rgb(var(--dark-blue-rgb)) solid;
   border-radius: 15px;
   padding: 18px;
+  width: 100%;
   background: rgba(var(--gradient-cyan-end), 0.1);
   background: linear-gradient(
     30deg,

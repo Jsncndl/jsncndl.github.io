@@ -1,6 +1,8 @@
 import emailjs from "@emailjs/browser";
 import { useEffect, useRef, useState } from "react";
 interface FormProps {
+  user_need: string;
+  user_url?: string;
   user_email: string;
   user_name: string;
   user_object: string;
@@ -11,10 +13,13 @@ interface FormProps {
 export default function Contact() {
   const form = useRef(null);
   const [formValue, setFormValue] = useState<FormProps>({
+    user_need: "Création",
     user_email: "",
     user_name: "",
     user_object: "",
     user_message: "",
+    user_phone: "",
+    user_url: "",
   });
 
   useEffect(() => {
@@ -30,7 +35,7 @@ export default function Contact() {
       emailjs
         .sendForm(
           "service_ke5882r",
-          "template_4vancxh",
+          "template_lzrlggc",
           form.current,
           "780HXU93LVlOKoj1u"
         )
@@ -48,6 +53,7 @@ export default function Contact() {
       <h2 className="w-2/3 text-center text-3xl">Me contacter</h2>
       <div className="flex w-full items-center justify-center">
         <form
+          ref={form}
           className="form-gradient flex flex-col gap-4 rounded-[15px] border-2 border-gray-500 p-6 text-white drop-shadow-md"
           onSubmit={onSubmit}
         >
@@ -58,9 +64,15 @@ export default function Contact() {
                 type="radio"
                 id="creation"
                 name="toggle_radio"
-                value={"creation"}
+                value={"Création"}
                 className="hidden"
                 defaultChecked
+                onChange={(e) => {
+                  setFormValue({
+                    ...formValue,
+                    user_need: "Création",
+                  });
+                }}
               />
               <label
                 className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
@@ -72,8 +84,14 @@ export default function Contact() {
                 type="radio"
                 id="refonte"
                 name="toggle_radio"
-                value={"refonte"}
+                value={"Refonte"}
                 className="hidden"
+                onChange={(e) => {
+                  setFormValue({
+                    ...formValue,
+                    user_need: "Refonte",
+                  });
+                }}
               />
               <label
                 className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
@@ -172,7 +190,6 @@ export default function Contact() {
 
           <button
             type="submit"
-            value="Envoyer"
             className="m-auto rounded-[15px] border border-white bg-blue-rgb px-4 py-2 text-white shadow-md shadow-gray-500"
           >
             Envoyer
