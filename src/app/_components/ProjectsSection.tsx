@@ -72,7 +72,7 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section>
+    <article>
       <h2 className="w-2/3 text-center text-3xl">Mes projets</h2>
       <motion.div className="relative flex w-full flex-row flex-wrap items-center justify-center gap-6">
         {projects.map((project, index) => (
@@ -192,6 +192,6 @@ export default function ProjectsSection() {
           </svg>
         </motion.div>
       </div>
-    </section>
+    </article>
   );
 }
