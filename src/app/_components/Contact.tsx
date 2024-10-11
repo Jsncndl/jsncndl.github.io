@@ -49,7 +49,7 @@ export default function Contact() {
         );
   };
   return (
-    <article>
+    <section>
       <h2 className="w-2/3 text-center text-3xl">Me contacter</h2>
       <div className="flex w-full items-center justify-center">
         <form
@@ -196,6 +196,6 @@ export default function Contact() {
           </button>
         </form>
       </div>
-    </article>
+    </section>
   );
 }

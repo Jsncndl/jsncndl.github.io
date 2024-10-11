@@ -47,7 +47,7 @@ h6 {
   color: rgb(var(--text-title-rgb));
 }
 
-article {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
