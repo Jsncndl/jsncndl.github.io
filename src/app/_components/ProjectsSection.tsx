@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import FormModal from "./FormModal";
+
 const figureVariants = {
   initial: {},
   hover: {

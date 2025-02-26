@@ -12,8 +12,6 @@ export default function Home() {
       <Header />
 
       <motion.section
-        animate={{ scale: [0, 1] }}
-        transition={{ duration: 0.6, delay: 1.3 }}
         className="w-full md:w-3/4"
       >
         <h2 className="text-center text-3xl md:w-2/3">

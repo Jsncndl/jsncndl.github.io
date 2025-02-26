@@ -39,7 +39,8 @@ export default function Header() {
   return (
     <header className="relative flex w-full flex-col items-center justify-center pt-10">
       <motion.div
-        transition={{ duration: 1.5, delay: 0.5 }}
+            className="h-auto translate-y-[150px]"
+        transition={{ duration: 1.2 }}
         animate={{
           height: ["150%", "200%"],
           translateY: [150, 0],
@@ -51,23 +52,20 @@ export default function Header() {
           alt="JCDev Logo"
           width={350}
           height={350}
+          style={{ height: "auto", width: "auto" }}
           priority
         />
       </motion.div>
       <motion.div
-        transition={{ delay: 1.2, duration: 0.7 }}
-        animate={{ scale: [0, 1] }}
-        className="md:w-3/4"
+        transition={{ duration: 1.2 }}
+        animate={{ translateY: [160, 0] }}
+        className="translate-y-[160px] md:w-3/4"
       >
         <h1 className="mb-4 mt-20 text-center text-4xl">
           Création de sites web modernes et performants pour entrepreneurs et
           PME
         </h1>
-        <motion.p
-          animate={{ scale: [0, 1] }}
-          transition={{ duration: 0.7, delay: 1.2 }}
-          className="text-center text-text-muted"
-        >
+        <motion.p className="text-center text-text-muted">
           Site one-page / site vitrine / site e-commerce / landing page
         </motion.p>
       </motion.div>

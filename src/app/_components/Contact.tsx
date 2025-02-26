@@ -1,5 +1,7 @@
 import emailjs from "@emailjs/browser";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+
+import FormModal from "./FormModal";
 interface FormProps {
   user_need: string;
   user_url?: string;
@@ -21,33 +23,64 @@ export default function Contact() {
     user_phone: "",
     user_url: "",
   });
+  const emailRegExp =
+    /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(formValue);
-  }, [formValue]);
-
-  const onSubmit = (event: any) => {
+  const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(formValue, "submit");
+    setIsSubmitted(true);
+    setLoading(true);
+    setError("");
+    setSuccess(false);
 
-    console.log(form.current);
-    if (form.current)
+    // Vérification de l'email
+    if (!emailRegExp.test(formValue.user_email)) {
+      setError("Email incorrect");
+      setLoading(false);
+      return;
+    }
+
+    // Envoi du formulaire avec EmailJS
+    if (form.current) {
       emailjs
         .sendForm(
-          "service_ke5882r",
+          "service_4i57lo1",
           "template_lzrlggc",
           form.current,
           "780HXU93LVlOKoj1u"
         )
         .then(
-          (result: any) => {
-            console.log(result.text);
+          () => {
+            setSuccess(true);
+            setLoading(false);
+            setTimeout(() => {
+              setSuccess(false);
+              setIsSubmitted(false); // Cache le modal après 2 secondes
+            }, 2000);
+            setFormValue({
+              user_need: "Création",
+              user_email: "",
+              user_name: "",
+              user_object: "",
+              user_message: "",
+              user_phone: "",
+              user_url: "",
+            });
           },
-          (error: any) => {
-            console.log(error.text);
+          () => {
+            setError(
+              "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
+            );
+            setLoading(false);
           }
         );
+    }
   };
+
   return (
     <section>
       <h2 className="w-2/3 text-center text-3xl">Me contacter</h2>
@@ -196,6 +229,14 @@ export default function Contact() {
           </button>
         </form>
       </div>
+      {isSubmitted && (loading || error || success) && (
+        <FormModal
+          error={Boolean(error)}
+          errorMessage={error}
+          loading={loading}
+          success={success}
+        />
+      )}
     </section>
   );
 }
