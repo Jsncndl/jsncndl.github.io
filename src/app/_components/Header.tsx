@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import MenuBar from "./MenuBar";
+
 const containerVariants = {
   initial: {
     height: "150%",
@@ -37,9 +39,10 @@ const containerTextVariants = {
 
 export default function Header() {
   return (
-    <header className="relative flex w-full flex-col items-center justify-center pt-10">
+    <header className="flex w-full flex-col items-center justify-center pt-10">
+      <MenuBar />
       <motion.div
-            className="h-auto translate-y-[150px]"
+        className="h-auto translate-y-[150px]"
         transition={{ duration: 1.2 }}
         animate={{
           height: ["150%", "200%"],
@@ -68,6 +71,15 @@ export default function Header() {
         <motion.p className="text-center text-text-muted">
           Site one-page / site vitrine / site e-commerce / landing page
         </motion.p>
+        <div className="mt-20 flex w-full justify-center">
+          <motion.a
+            href="#"
+            className="header-link text-decoration-none rounded-lg bg-blue-rgb px-4 py-2 text-center text-2xl font-light text-white"
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          >
+            Mes services
+          </motion.a>
+        </div>
       </motion.div>
       <div
         className="pointer-events-none absolute -top-40 z-[-10] transform-gpu blur-2xl lg:left-0 lg:translate-y-0 lg:transform-gpu"
