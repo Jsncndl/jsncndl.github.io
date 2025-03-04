@@ -219,17 +219,48 @@ input:checked + label {
 }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid rgba(var(--blue-rgb), 0.65);
-  padding: 32px;
-  gap: 1rem;
-  width: 66.6666666%;
-  background-color: #CCCCCC;
-  color: black;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+border: 1px solid rgba(var(--blue-rgb), 0.65);
+padding: 32px;
+gap: 1rem;
+width: 66.6666666%;
+background-color: #CCCCCC;
+color: black;
 }
 
+.card-even {
+  flex-direction: row;
+}
+
+.card-odd {
+  flex-direction: row-reverse;
+}
+
+.card-image {
+  display: none;
+}
+
+.card-content-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgba(var(--dark-blue-rgb), 1);
+}
+
+.card-content-text-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 10px 0 10px 5px;
+  line-height: normal;
+}
+
+.card-content-text-list-item-icon {
+  font-size: larger;
+}
+
+@media (min-width: 1300px) {
 .card-image {
   border: 1px solid red;
   width: 50%;
@@ -242,7 +273,7 @@ input:checked + label {
   border: 1px solid green;
   width: 50%;
 }
-
+}
 
 @media (min-width: 768px) {
   .card-project {
