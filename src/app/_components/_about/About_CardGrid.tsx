@@ -129,17 +129,17 @@ const About_CardGrid: React.FC = () => {
         {services.map((service, index) => (
           <>
             {index % 2 === 0 && (
-              <div className="hidden text-center blue-shadow lg:flex lg:items-center lg:justify-center">
+              <div key={`image-${index}`} className="hidden text-center blue-shadow lg:flex lg:items-center lg:justify-center">
                 <Image
                   src={service.imageUrl}
-                  alt="bookmark"
+                  alt={service.title}
                   width={350}
                   height={250}
                 />
               </div>
             )}
             <motion.div
-              key={index}
+              key={`card-${index}`}
               whileHover={{
                 borderWidth: "1.5px",
                 borderColor: "rgba(7, 152, 242, 0.38)",
