@@ -82,7 +82,7 @@ export default function Contact() {
   };
 
   return (
-    <section>
+    <section id="contact">
       <h2 className="w-2/3 text-center text-3xl">Me contacter</h2>
       <div className="flex w-full items-center justify-center">
         <form
