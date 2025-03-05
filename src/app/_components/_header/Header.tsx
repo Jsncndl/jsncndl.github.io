@@ -19,7 +19,7 @@ export default function Header() {
         />
       </div>
       <div className="md:w-3/4">
-        <h1 className="mt-20 flex flex-col text-center text-5xl font-bold">
+        <h1 className="mt-20 flex flex-col text-center text-4xl font-bold">
           <span>CREATION DE SITES WEB </span>
           <span className="text-4xl">MODERNES ET PERFORMANTS</span>
         </h1>
