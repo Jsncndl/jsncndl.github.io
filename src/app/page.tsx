@@ -1,48 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
+import About from "./_components/_about/About";
+import Header from "./_components/_header/Header";
+import Hero from "./_components/_hero/Hero";
+import NewServices from "./_components/_services/NewServices";
 import Contact from "./_components/Contact";
-import Header from "./_components/Header";
 import ProjectsSection from "./_components/ProjectsSection";
-import NewServices from "./_components/NewServices";
 
 export default function Home() {
   return (
     <main className="absolute flex flex-col items-center justify-center gap-20 overflow-x-hidden overflow-y-clip p-8 md:p-24">
       <Header />
-
-      <motion.section className="w-full md:w-3/4 lg:mb-20 lg:min-h-[250px]">
-        <div className="first-section">
-          <h2 className="-mt-10 text-center text-3xl md:w-2/3">
-            Transformez votre présence en ligne
-          </h2>
-          <div className="first-section-image">
-            <Image
-              className="hidden lg:block"
-              src="/undraw_bookmarks_i66k.svg"
-              alt="bookmark"
-              width={350}
-              height={250}
-              style={{ width: "350px", height: "auto" }}
-            />
-          </div>
-          <div className="first-section-caption flex flex-col flex-wrap items-center justify-between gap-4 text-lg lg:mx-28 lg:mt-44 lg:flex-row">
-            <p className="text-center lg:ml-8 lg:w-1/3 min-[1300px]:ml-16">
-              Des <strong>solutions sur mesure</strong> pour une présence en
-              ligne qui vous ressemble.
-            </p>
-            <p className="text-center lg:mr-4 lg:w-1/3 min-[1300px]:mr-8">
-              Spécialisé dans la création de <strong>site web vitrine</strong>{" "}
-              et <strong>e-commerce</strong>, JCDev vous accompagne pour donner
-              vie à vos projets.
-            </p>
-          </div>
-        </div>
-      </motion.section>
+      <Hero />
       <NewServices />
-      <section>
+      <About />
+{/*       <section>
         <h2 className="w-2/3 text-center text-3xl">Mes services</h2>
         <motion.div className="relative flex w-full flex-col flex-wrap gap-6 md:grid md:grid-cols-2 md:grid-rows-2">
           <motion.div
@@ -239,7 +213,7 @@ export default function Home() {
             supérieur.`}
           </p>
         </div>
-      </section>
+      </section> */}
       <ProjectsSection />
       <Contact />
     </main>

@@ -4,14 +4,17 @@ import { Inter, K2D, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const k2d = K2D({ weight: ["200", "400", "700"], subsets: ["latin"] });
+const k2d = K2D({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "JCDev",
   description:
     "Création de site web modernes et performants pour entrepreneur, TPE et PME. De la refonte de sites webs existants à la conception, je vous aide à atteindre vos objectifs.",
-  /*   themeColor: [
+  /*      themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fff" },
     { media: "(prefers-color-scheme: dark)", color: "#000" },
   ], */
@@ -24,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${k2d.className}`}>
+      <body className={`${montserrat.className}`}>
         <ThemeProvider attribute="class">
           {/* <svg
             version="1.1"
