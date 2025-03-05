@@ -299,6 +299,42 @@ input:checked + label {
   width: 100%;
 }
 
+.footer-terms-accordion {
+
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 300;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  border-top: 1px solid #ddd;
+  text-align: left;
+}
+
+.accordion-inner {
+  padding: 1rem;
+}
+
+.accordion-inner p {
+  margin: 8px 0;
+}
+
+.accordion-inner h2 {
+  margin: 24px 0 0 0;
+  font-weight: 600;
+}
+
 @media (min-width: 768px) {
   
   .card-project {
