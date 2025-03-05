@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
-
 import FormModal from "./FormModal";
+
 interface FormProps {
   user_need: string;
   user_url?: string;
@@ -10,6 +10,8 @@ interface FormProps {
   user_object: string;
   user_message: string;
   user_phone?: string;
+  user_company?: string;
+  user_work?: string;
 }
 
 export default function Contact() {
@@ -22,9 +24,14 @@ export default function Contact() {
     user_message: "",
     user_phone: "",
     user_url: "",
+    user_company: "",
+    user_work: ""
   });
-  const emailRegExp =
-    /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+
+  const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegExp = /^\+?[0-9]{10,14}$/; // Format international avec code pays optionnel
+  const urlRegExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -37,9 +44,21 @@ export default function Contact() {
     setError("");
     setSuccess(false);
 
-    // Vérification de l'email
+    // Validation des champs
     if (!emailRegExp.test(formValue.user_email)) {
       setError("Email incorrect");
+      setLoading(false);
+      return;
+    }
+
+    if (formValue.user_phone && !phoneRegExp.test(formValue.user_phone)) {
+      setError("Numéro de téléphone incorrect");
+      setLoading(false);
+      return;
+    }
+
+    if (formValue.user_url && !urlRegExp.test(formValue.user_url)) {
+      setError("URL incorrecte");
       setLoading(false);
       return;
     }
@@ -69,6 +88,8 @@ export default function Contact() {
               user_message: "",
               user_phone: "",
               user_url: "",
+              user_company: "",
+              user_work: ""
             });
           },
           () => {
@@ -90,49 +111,6 @@ export default function Contact() {
           className="form-gradient flex flex-col gap-4 rounded-[15px] border-2 border-gray-500 p-6 text-white drop-shadow-md"
           onSubmit={onSubmit}
         >
-          <fieldset className="flex flex-wrap gap-6 rounded-[15px] border-2 border-gray-500 p-4">
-            <legend className="px-2">De quoi avez-vous besoin ?</legend>
-            <span className="flex flex-1">
-              <input
-                type="radio"
-                id="creation"
-                name="toggle_radio"
-                value={"Création"}
-                className="hidden"
-                defaultChecked
-                onChange={(e) => {
-                  setFormValue({
-                    ...formValue,
-                    user_need: "Création",
-                  });
-                }}
-              />
-              <label
-                className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
-                htmlFor="creation"
-              >{`Création d'un site`}</label>
-            </span>
-            <span className="flex flex-1">
-              <input
-                type="radio"
-                id="refonte"
-                name="toggle_radio"
-                value={"Refonte"}
-                className="hidden"
-                onChange={(e) => {
-                  setFormValue({
-                    ...formValue,
-                    user_need: "Refonte",
-                  });
-                }}
-              />
-              <label
-                className="m-auto cursor-pointer text-wrap rounded-[15px] border-2 border-gray-400 bg-gray-700 px-4 py-2 text-center text-gray-400"
-                htmlFor="refonte"
-              >{`Refonte d'un site`}</label>
-            </span>
-          </fieldset>
-
           <span className="flex flex-wrap gap-4">
             <span className="relative flex-grow">
               <label className="absolute ml-2 hidden" htmlFor="user_name">
@@ -156,7 +134,7 @@ export default function Contact() {
               </label>
               <input
                 required
-                type="text"
+                type="email"
                 name="user_email"
                 id="user_email"
                 placeholder="Votre email"
@@ -168,13 +146,46 @@ export default function Contact() {
             </span>
           </span>
 
+          <span className="flex flex-wrap gap-4">
+            <span className="relative flex-grow">
+              <label className="absolute ml-2 hidden" htmlFor="user_company">
+                Nom de votre entreprise
+              </label>
+              <input
+                type="text"
+                name="user_company"
+                id="user_company"
+                placeholder="Nom de votre entreprise"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
+                onChange={(event: any) =>
+                  setFormValue({ ...formValue, user_company: event.target.value })
+                }
+              />
+            </span>
+            <span className="relative flex-grow">
+              <label className="absolute ml-2 hidden" htmlFor="user_work">
+                Votre profession
+              </label>
+              <input
+                type="text"
+                name="user_work"
+                id="user_work"
+                placeholder="Votre profession"
+                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
+                onChange={(event: any) =>
+                  setFormValue({ ...formValue, user_work: event.target.value })
+                }
+              />
+            </span>
+          </span>
+
           <span className="relative flex flex-wrap gap-4">
-            <span className="flex-grow">
+            <span className="">
               <label htmlFor="user_phone" className="absolute ml-2 hidden">
                 Votre téléphone
               </label>
               <input
-                type="text"
+                type="tel"
                 name="user_phone"
                 id="user_phone"
                 placeholder="Votre téléphone"
@@ -184,25 +195,25 @@ export default function Contact() {
                 }
               />
             </span>
-            <span className="flex-grow">
-              <label className="absolute ml-2 hidden" htmlFor="user_object">
-                Objet de votre message
-              </label>
-              <input
-                required
-                type="text"
-                name="user_object"
-                id="user_object"
-                placeholder="Objet de votre message"
-                className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
-                onChange={(event: any) =>
-                  setFormValue({
-                    ...formValue,
-                    user_object: event.target.value,
-                  })
-                }
-              />
-            </span>
+          </span>
+          <span className="mt-4 flex-grow">
+            <label className="absolute ml-2 hidden" htmlFor="user_object">
+              Objet de votre message
+            </label>
+            <input
+              required
+              type="text"
+              name="user_object"
+              id="user_object"
+              placeholder="Objet de votre message"
+              className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
+              onChange={(event: any) =>
+                setFormValue({
+                  ...formValue,
+                  user_object: event.target.value,
+                })
+              }
+            />
           </span>
 
           <span className="flex flex-col gap-2">
