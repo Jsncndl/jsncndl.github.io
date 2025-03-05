@@ -8,6 +8,7 @@ import Hero from "./_components/_hero/Hero";
 import NewServices from "./_components/_services/NewServices";
 import Contact from "./_components/Contact";
 import ProjectsSection from "./_components/ProjectsSection";
+import Footer from "./_components/_footer/Footer";
 
 export default function Home() {
   return (
@@ -216,6 +217,7 @@ export default function Home() {
       </section> */}
       <ProjectsSection />
       <Contact />
+      <Footer/>
     </main>
   );
 }
