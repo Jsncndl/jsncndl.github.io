@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-/* import MenuBar from "./Header_MenuBar"; */
 import HeaderButton from "./Header_Button";
 
 export default function Header() {

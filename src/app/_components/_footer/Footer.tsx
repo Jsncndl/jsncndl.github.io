@@ -1,6 +1,7 @@
 import Link from "next/link";
-import React from "react";
+
 import Footer_Terms from "./Footer_Terms";
+
 const Footer: React.FC = () => {
   return (
     <footer className="p-4">

@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
+
 import FormModal from "./FormModal";
 
 interface FormProps {
@@ -25,12 +26,13 @@ export default function Contact() {
     user_phone: "",
     user_url: "",
     user_company: "",
-    user_work: ""
+    user_work: "",
   });
 
   const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegExp = /^\+?[0-9]{10,14}$/; // Format international avec code pays optionnel
-  const urlRegExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+  const urlRegExp =
+    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
 
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
@@ -89,7 +91,7 @@ export default function Contact() {
               user_phone: "",
               user_url: "",
               user_company: "",
-              user_work: ""
+              user_work: "",
             });
           },
           () => {
@@ -158,7 +160,10 @@ export default function Contact() {
                 placeholder="Nom de votre entreprise"
                 className="border-1 w-full rounded-t-[15px] border border-b-2 border-blue-rgb border-b-white/80 bg-dark-blue-rgb p-2 focus:border-white/80 focus:outline-none"
                 onChange={(event: any) =>
-                  setFormValue({ ...formValue, user_company: event.target.value })
+                  setFormValue({
+                    ...formValue,
+                    user_company: event.target.value,
+                  })
                 }
               />
             </span>
