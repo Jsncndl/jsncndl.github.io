@@ -11,9 +11,31 @@ const k2d = K2D({
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "JCDev",
+  title: "JCDev - Création de Sites Web Modernes pour Entrepreneurs et PME",
   description:
-    "Création de site web modernes et performants pour entrepreneur, TPE et PME. De la refonte de sites webs existants à la conception, je vous aide à atteindre vos objectifs.",
+    "JCDev propose des solutions sur mesure pour la création de sites web one-page, vitrine, e-commerce et landing pages. Améliorez votre visibilité en ligne avec des sites performants et sécurisés.",
+  keywords: [
+    "Création de site web",
+    "Développement web",
+    "Site vitrine",
+    "Site e-commerce",
+    "Landing page",
+    "SEO",
+    "Optimisation pour les moteurs de recherche",
+    "Design web",
+    "Responsive design",
+    "Maintenance de site web",
+    "Hébergement web",
+    "JCDev",
+  ],
+  openGraph: {
+    title: "JCDev - Création de Sites Web Modernes pour Entrepreneurs et PME",
+    description:
+      "JCDev propose des solutions sur mesure pour la création de sites web one-page, vitrine, e-commerce et landing pages. Améliorez votre visibilité en ligne avec des sites performants et sécurisés.",
+    url: "https://jsncndl.github.io",
+    images: ["https://jsncndl.github.io/opengraph-image.jpg"],
+    siteName: "JCDev",
+  },
   /*      themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fff" },
     { media: "(prefers-color-scheme: dark)", color: "#000" },
