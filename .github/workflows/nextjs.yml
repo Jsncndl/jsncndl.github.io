@@ -60,7 +60,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Inject Google Site Verification Meta Tag
         run: |
-          META_TAG='<meta name="google-site-verification" content="wFC0Oe56RqgMUmIX3aKV9RJgE7VHANup3bhtdLmr1HU" />'
+          META_TAG='<meta name="google-site-verification" content="wFC0Oe56RqgMUmIX3aKV9RJgE7VHANup3" />'
           find ./out -name "*.html" -exec sed -i "s|</head>|$META_TAG\n</head>|g" {} +
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
