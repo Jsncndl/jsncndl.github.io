@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#000" },
   ], */
   applicationName: "JCDev",
+  verification: {
+    google: "3AFQQWT-UzJdtSJbZQDraNOKMktfaxiPtePTb6oFEmw",
+  },
 };
 export default function RootLayout({
   children,
